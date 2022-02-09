@@ -1,1 +1,9 @@
-<p>games works!</p>
+<h2>Games</h2>
+<ul>
+  <li *ngFor="let game of games">
+    <button type="button">
+      <div>{{game.name}}</div>
+      <div>Price: {{game.cost}} {{game.cost !== 1 ? "tokens" : "token"}}</div>
+    </button>
+  </li>
+</ul>
