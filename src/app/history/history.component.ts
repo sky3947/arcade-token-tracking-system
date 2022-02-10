@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Receipt } from 'src/receipt';
+import { PopupService } from '../popup.service';
 
 @Component({
   selector: 'app-history',
@@ -12,7 +13,7 @@ export class HistoryComponent implements OnInit {
   tokensPurchased: number = 0;
   tokensSpent: number = 0;
 
-  constructor() { }
+  constructor(private popupService: PopupService) { }
 
   ngOnInit(): void {
   }
@@ -36,5 +37,9 @@ export class HistoryComponent implements OnInit {
 
     this.tokensPurchased = purchased;
     this.tokensSpent = spent;
+  }
+
+  getPopupStatus(): boolean {
+    return this.popupService.getPopupStatus();
   }
 }

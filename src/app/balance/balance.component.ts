@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Receipt } from 'src/receipt';
 import { LedgerService } from '../ledger.service';
+import { PopupService } from '../popup.service';
 
 @Component({
   selector: 'app-balance',
@@ -12,7 +13,10 @@ export class BalanceComponent implements OnInit {
   balance: number = 0;
   @Output() ledgerEmitter = new EventEmitter<Receipt[]>();
 
-  constructor(private ledgerService: LedgerService) { }
+  constructor(
+    private ledgerService: LedgerService,
+    private popupService: PopupService,
+  ) { }
 
   ngOnInit(): void {
     this.getLedger();
@@ -34,5 +38,9 @@ export class BalanceComponent implements OnInit {
     let balance = 0;
     this.ledger.map(r => balance += r.transaction.tokenAmount);
     this.balance = balance;
+  }
+
+  showPopup(): void {
+    this.popupService.showPopup();
   }
 }
