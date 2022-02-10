@@ -1,10 +1,10 @@
-<app-balance (ledgerEmitter)="grabLedger($event)"></app-balance>
+<app-balance [balance]="balance"></app-balance>
 <h2>Transaction history:</h2>
 <div *ngFor="let receipt of ledger">
   <div>
     <span>{{receipt.info}}</span>
     <span *ngIf="receipt.transaction.tokenAmount > 0; else showInRed" class="refill">Tokens purchased:
-      {{receipt.transaction.tokenAmount}}</span>
+      {{receipt.transaction.tokenAmount}} ({{receipt.transaction.dollarAmount | currency}})</span>
     <ng-template #showInRed>
       <span class="spend">Tokens spent: {{receipt.transaction.tokenAmount | abs}}</span>
     </ng-template>
@@ -16,4 +16,4 @@
 <h3>Summary:</h3>
 <span>Tokens purchased: {{this.tokensPurchased}} | Tokens spent: {{this.tokensSpent | abs}} | Tokens available: {{this.tokensPurchased + this.tokensSpent}}</span>
 
-<app-purchase-popup *ngIf="this.getPopupStatus()"></app-purchase-popup>
+<app-purchase-popup *ngIf="this.getPopupStatus()" [purchasePoint]="this"></app-purchase-popup>

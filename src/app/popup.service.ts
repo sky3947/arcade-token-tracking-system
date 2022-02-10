@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class PopupService {
   showing: boolean = false;
+  tokenPurchaseAmount: number = 1;
 
   constructor() { }
 
@@ -18,5 +19,9 @@ export class PopupService {
 
   getPopupStatus(): boolean {
     return this.showing;
+  }
+
+  getTokenPurchaseAmount(): number {
+    return Math.max(1, this.tokenPurchaseAmount);
   }
 }

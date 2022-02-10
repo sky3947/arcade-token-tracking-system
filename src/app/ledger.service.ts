@@ -16,7 +16,11 @@ export class LedgerService {
     return of(LEDGER);
   }
 
-  addReceipt(receipt: IdlessReceipt): void {
-    LEDGER.push({id: LEDGER.length, ...receipt});
+  nextReceipt(receipt: IdlessReceipt): Receipt {
+    return {id: LEDGER.length, ...receipt};
+  }
+
+  addReceipt(receipt: Receipt): void {
+    LEDGER.push(receipt);
   }
 }

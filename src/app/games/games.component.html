@@ -1,4 +1,4 @@
-<app-balance></app-balance>
+<app-balance [balance]="balance"></app-balance>
 <h2>Games</h2>
 <ul>
   <li *ngFor="let game of games">
@@ -9,4 +9,4 @@
   </li>
 </ul>
 
-<app-purchase-popup *ngIf="this.getPopupStatus()"></app-purchase-popup>
+<app-purchase-popup *ngIf="this.getPopupStatus()" [purchasePoint]="this"></app-purchase-popup>

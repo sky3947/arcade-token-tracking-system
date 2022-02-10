@@ -1,26 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import { Receipt } from 'src/receipt';
+import { LedgerService } from '../ledger.service';
 import { PopupService } from '../popup.service';
+import { PurchasePoint } from '../purchase-point';
 
 @Component({
   selector: 'app-history',
   templateUrl: './history.component.html',
   styleUrls: ['./history.component.css']
 })
-export class HistoryComponent implements OnInit {
-  // Receives the ledger from the child BalanceComponent.
-  ledger: Receipt[] = [];
+export class HistoryComponent extends PurchasePoint implements OnInit {
+  balance: number = 0;
   tokensPurchased: number = 0;
   tokensSpent: number = 0;
 
-  constructor(private popupService: PopupService) { }
-
-  ngOnInit(): void {
+  constructor(
+    ledgerService: LedgerService,
+    popupService: PopupService,
+  ) {
+    super(ledgerService, popupService)
   }
 
-  grabLedger(ledger: Receipt[]): void {
-    this.ledger = ledger;
+  ngOnInit(): void {
+    this.loadLedger();
     this.calculateTokensHistory();
+    this.calculateTokenBalance();
   }
 
   calculateTokensHistory(): void {
@@ -41,5 +44,19 @@ export class HistoryComponent implements OnInit {
 
   getPopupStatus(): boolean {
     return this.popupService.getPopupStatus();
+  }
+
+  calculateTokenBalance(): void {
+    let balance = 0;
+    this.ledger.map(r => balance += r.transaction.tokenAmount);
+    this.balance = balance;
+  }
+
+  /**
+   * Overrides updateValues() in PruchasePoint.
+   */
+  override updateValues(): void {
+      this.calculateTokenBalance();
+      this.calculateTokensHistory();
   }
 }

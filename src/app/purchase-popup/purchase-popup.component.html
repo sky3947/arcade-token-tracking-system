@@ -2,10 +2,12 @@
   <div class="background">
     <h3>Purchase Tokens:</h3>
     <div>
-      <input type="number" min="1" [(ngModel)]="tokenPurchaseAmount" placeholder="1">
-      <span>Price: {{(tokenPurchaseAmount > 0 ? tokenPurchaseAmount : 1) * .25 | currency}}</span>
+      <input type="number" min="1" [(ngModel)]="popupService.tokenPurchaseAmount" placeholder="1">
+      <span>Price: {{(popupService.tokenPurchaseAmount > 0 ? popupService.tokenPurchaseAmount : 1) * .25 |
+        currency}}</span>
     </div>
-    <button (click)="onPurchase()">Buy {{tokenPurchaseAmount > 0 ? tokenPurchaseAmount : 1}} for {{(tokenPurchaseAmount > 0 ?
-      tokenPurchaseAmount : 1) * .25 | currency}}</button>
+    <button (click)="onPurchase()">Buy {{popupService.tokenPurchaseAmount > 0 ? popupService.tokenPurchaseAmount : 1}}
+      for {{(popupService.tokenPurchaseAmount > 0 ?
+      popupService.tokenPurchaseAmount : 1) * .25 | currency}}</button>
   </div>
 </div>

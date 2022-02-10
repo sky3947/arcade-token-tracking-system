@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { PopupService } from '../popup.service';
-import { LedgerService } from '../ledger.service';
+import { PurchasePoint } from '../purchase-point';
 
 @Component({
   selector: 'app-purchase-popup',
@@ -10,23 +9,17 @@ import { LedgerService } from '../ledger.service';
   styleUrls: ['./purchase-popup.component.css']
 })
 export class PurchasePopupComponent implements OnInit {
-  tokenPurchaseAmount: number = 1;
+  @Input() purchasePoint!: PurchasePoint;
 
   constructor(
-    private popupService: PopupService,
-    private ledgerService: LedgerService,
+    public popupService: PopupService,
   ) { }
 
   ngOnInit(): void {
   }
 
   onPurchase(): void {
-    this.tokenPurchaseAmount = Math.max(1, this.tokenPurchaseAmount);
     this.popupService.hidePopup();
-    this.ledgerService.addReceipt({
-      date: Date.now(),
-      transaction: {dollarAmount: this.tokenPurchaseAmount * .25, tokenAmount: this.tokenPurchaseAmount},
-      info: "Card Refill",
-    });
+    this.purchasePoint.purchaseTokens();
   }
 }
