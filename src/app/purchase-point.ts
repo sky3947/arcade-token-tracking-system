@@ -1,4 +1,4 @@
-import { Receipt } from "src/receipt";
+import { Receipt } from "./receipt";
 import { LedgerService } from "./ledger.service";
 import { PopupService } from "./popup.service";
 

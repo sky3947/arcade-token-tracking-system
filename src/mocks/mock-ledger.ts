@@ -1,4 +1,4 @@
-import { Receipt } from "../receipt";
+import { Receipt } from "src/app/receipt"
 
 export const LEDGER: Receipt[] = [
   {

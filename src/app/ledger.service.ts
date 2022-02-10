@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { Observable, of } from 'rxjs';
 
-import { IdlessReceipt, Receipt } from 'src/receipt';
+import { IdlessReceipt, Receipt } from 'src/app/receipt';
 import { LEDGER } from 'src/mocks/mock-ledger';
 
 @Injectable({
