@@ -1,0 +1,17 @@
+<app-balance (ledgerEmitter)="grabLedger($event)"></app-balance>
+<h2>Transaction history:</h2>
+<div *ngFor="let receipt of ledger">
+  <div>
+    <span>{{receipt.info}}</span>
+    <span *ngIf="receipt.transaction.tokenAmount > 0; else elseBlock" class="refill">Tokens purchased:
+      {{receipt.transaction.tokenAmount}}</span>
+    <ng-template #elseBlock>
+      <span class="spend">Tokens spent: {{receipt.transaction.tokenAmount | abs}}</span>
+    </ng-template>
+  </div>
+  <div>
+    <span>Date of transaction: {{receipt.date | date:"M/d/yyyy, h:mm a"}}</span>
+  </div>
+</div>
+<h3>Summary:</h3>
+<span>Tokens purchased: {{this.tokensPurchased}} | Tokens spent: {{this.tokensSpent | abs}} | Tokens available: {{this.tokensPurchased + this.tokensSpent}}</span>
