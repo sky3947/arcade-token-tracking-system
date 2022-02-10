@@ -6,8 +6,9 @@
       <span>Price: {{(popupService.tokenPurchaseAmount > 0 ? popupService.tokenPurchaseAmount : 1) * .25 |
         currency}}</span>
     </div>
-    <button (click)="onPurchase()">Buy {{popupService.tokenPurchaseAmount > 0 ? popupService.tokenPurchaseAmount : 1}}
+    <button type="button" (click)="onPurchase()">Buy {{popupService.tokenPurchaseAmount > 0 ? popupService.tokenPurchaseAmount : 1}}
       for {{(popupService.tokenPurchaseAmount > 0 ?
       popupService.tokenPurchaseAmount : 1) * .25 | currency}}</button>
+    <button type="button" (click)="onCancel()">Cancel</button>
   </div>
 </div>

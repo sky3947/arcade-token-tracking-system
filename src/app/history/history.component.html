@@ -2,6 +2,7 @@
 <h2>Transaction history:</h2>
 <div *ngFor="let receipt of ledger">
   <div>
+    <span>(ID: {{receipt.id}})</span>
     <span>{{receipt.info}}</span>
     <span *ngIf="receipt.transaction.tokenAmount > 0; else showInRed" class="refill">Tokens purchased:
       {{receipt.transaction.tokenAmount}} ({{receipt.transaction.dollarAmount | currency}})</span>
@@ -14,6 +15,6 @@
   </div>
 </div>
 <h3>Summary:</h3>
-<span>Tokens purchased: {{this.tokensPurchased}} | Tokens spent: {{this.tokensSpent | abs}} | Tokens available: {{this.tokensPurchased + this.tokensSpent}}</span>
+<span>Money spent: {{this.tokensPurchased * .25 | currency}} | Tokens purchased: {{this.tokensPurchased}} | Tokens spent: {{this.tokensSpent | abs}} | Tokens available: {{this.tokensPurchased + this.tokensSpent}}</span>
 
 <app-purchase-popup *ngIf="this.getPopupStatus()" [purchasePoint]="this"></app-purchase-popup>

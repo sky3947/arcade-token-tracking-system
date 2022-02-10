@@ -2,7 +2,7 @@
 <h2>Games</h2>
 <ul>
   <li *ngFor="let game of games">
-    <button type="button">
+    <button type="button" (click)="insertTokens(game)">
       <div>{{game.name}}</div>
       <div>Price: {{game.cost}} {{game.cost !== 1 ? "tokens" : "token"}}</div>
     </button>

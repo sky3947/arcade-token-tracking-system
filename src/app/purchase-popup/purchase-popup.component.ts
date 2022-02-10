@@ -22,4 +22,8 @@ export class PurchasePopupComponent implements OnInit {
     this.popupService.hidePopup();
     this.purchasePoint.purchaseTokens();
   }
+
+  onCancel(): void {
+    this.popupService.hidePopup();
+  }
 }

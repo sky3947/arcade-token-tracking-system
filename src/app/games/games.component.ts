@@ -51,6 +51,20 @@ export class GamesComponent extends PurchasePoint implements OnInit {
     this.balance = balance;
   }
 
+  insertTokens(game: Game): void {
+    let tokenPrice = game.cost;
+    if (tokenPrice > this.balance)
+      return
+
+    let receipt = this.ledgerService.nextReceipt({
+      date: Date.now(),
+      transaction: { dollarAmount: 0, tokenAmount: -1 * tokenPrice },
+      info: `${game.name} Game`,
+    });
+    this.ledgerService.addReceipt(receipt);
+    this.updateValues();
+  }
+
   /**
   * Overrides updateValues() in PruchasePoint.
   */
