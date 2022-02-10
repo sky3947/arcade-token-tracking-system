@@ -1,7 +1,51 @@
+h2 {
+  display: block;
+  background-color: slategray;
+  padding: .25em;
+  margin: 2em 0em 0em 0em;
+  border-bottom: 1px solid white;
+}
+
+h3 {
+  display: block;
+  background-color: slategray;
+  padding: .25em;
+  margin: 2em 0em .5em 0em;
+  border-bottom: 1px solid white;
+}
+
+div.receipt {
+  background-color: slategray;
+  padding: .5em;
+  border-bottom: 1px solid white;
+}
+
+div.main-info {
+  display: inline-block;
+  width: 100%;
+}
+
+div.main-info div.left {
+  float: left;
+}
+
+div.main-info div.right {
+  float: right;
+}
+
 span.refill {
-  color: green;
+  color: greenyellow;
 }
 
 span.spend {
   color: red;
+}
+
+span.id {
+  color: darkslategray;
+  margin-right: 1em;
+}
+
+span.date {
+  font-size: .75em
 }

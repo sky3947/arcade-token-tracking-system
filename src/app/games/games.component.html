@@ -1,12 +1,13 @@
 <app-balance [balance]="balance"></app-balance>
 <h2>Games</h2>
-<ul>
-  <li *ngFor="let game of games">
+<div class="games-list">
+  <div *ngFor="let game of games" class="game">
     <button type="button" (click)="insertTokens(game)">
-      <div>{{game.name}}</div>
-      <div>Price: {{game.cost}} {{game.cost !== 1 ? "tokens" : "token"}}</div>
+      <img src="" alt="{{game.name + ' image' | uppercase}}" class="game-image">
+      <span class="game-name">{{game.name}}</span>
+      <span class="game-cost">PLAY: {{game.cost}} {{game.cost !== 1 ? "tokens" : "token"}}</span>
     </button>
-  </li>
-</ul>
+  </div>
+</div>
 
 <app-purchase-popup *ngIf="this.getPopupStatus()" [purchasePoint]="this"></app-purchase-popup>

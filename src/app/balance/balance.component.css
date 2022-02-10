@@ -1,0 +1,16 @@
+div.balanceContainer {
+  display: inline-block;
+  margin-top: 1em;
+}
+
+span.balance {
+  display: table;
+  padding: .5em;
+  border: 1px solid slategray;
+}
+
+button.buy {
+  width: 100%;
+  padding: .5em 1em;
+  font-size: 1em;
+}

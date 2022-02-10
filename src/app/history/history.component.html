@@ -1,20 +1,23 @@
 <app-balance [balance]="balance"></app-balance>
 <h2>Transaction history:</h2>
-<div *ngFor="let receipt of ledger">
-  <div>
-    <span>(ID: {{receipt.id}})</span>
-    <span>{{receipt.info}}</span>
-    <span *ngIf="receipt.transaction.tokenAmount > 0; else showInRed" class="refill">Tokens purchased:
-      {{receipt.transaction.tokenAmount}} ({{receipt.transaction.dollarAmount | currency}})</span>
-    <ng-template #showInRed>
-      <span class="spend">Tokens spent: {{receipt.transaction.tokenAmount | abs}}</span>
-    </ng-template>
+<div *ngFor="let receipt of ledger" class="receipt">
+  <div class="main-info">
+    <div class="left">
+      <span class="id">(ID: {{receipt.id}})</span>
+      <span>{{receipt.info}}</span>
+    </div>
+    <div class="right">
+      <span *ngIf="receipt.transaction.tokenAmount > 0; else showInRed" class="refill">Tokens purchased:
+        {{receipt.transaction.tokenAmount}} ({{receipt.transaction.dollarAmount | currency}})</span>
+      <ng-template #showInRed>
+        <span class="spend">Tokens spent: {{receipt.transaction.tokenAmount | abs}}</span>
+      </ng-template>
+    </div>
   </div>
-  <div>
-    <span>Date of transaction: {{receipt.date | date:"M/d/yyyy, h:mm a"}}</span>
-  </div>
+  <span class="date">Date of transaction: {{receipt.date | date:"M/d/yyyy, h:mm a"}}</span>
 </div>
 <h3>Summary:</h3>
-<span>Money spent: {{this.tokensPurchased * .25 | currency}} | Tokens purchased: {{this.tokensPurchased}} | Tokens spent: {{this.tokensSpent | abs}} | Tokens available: {{this.tokensPurchased + this.tokensSpent}}</span>
+<span>Money spent: {{this.tokensPurchased * .25 | currency}} | Tokens purchased: {{this.tokensPurchased}} | Tokens
+  spent: {{this.tokensSpent | abs}} | Tokens available: {{this.tokensPurchased + this.tokensSpent}}</span>
 
 <app-purchase-popup *ngIf="this.getPopupStatus()" [purchasePoint]="this"></app-purchase-popup>
