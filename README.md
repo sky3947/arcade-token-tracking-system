@@ -1,6 +1,6 @@
 # ArcadeTokenTrackingSystem
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.2. This is an assignment
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.2. This is an assignment.
 
 ## Angular setup
 
@@ -8,7 +8,7 @@ If you don't have an Angular development environment set up, follow the local se
 
 ## Development server
 
-Run `ng serve` in the project folder for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Go to the project folder in a terminal. Run `ng serve` in the project folder for a dev server. (You may have to run `npm install` to install package dependencies.) Navigate to `http://localhost:4200/` to see the Application.
 
 ## Future features
 
