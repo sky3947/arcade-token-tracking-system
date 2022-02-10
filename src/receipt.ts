@@ -6,3 +6,9 @@ export interface Receipt {
   transaction: Transaction;
   info: string;
 }
+
+export interface IdlessReceipt {
+  date: number;
+  transaction: Transaction;
+  info: string;
+}

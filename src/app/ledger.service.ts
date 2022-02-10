@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { Observable, of } from 'rxjs';
 
-import { Receipt } from 'src/receipt';
+import { IdlessReceipt, Receipt } from 'src/receipt';
 import { LEDGER } from 'src/mocks/mock-ledger';
 
 @Injectable({
@@ -14,5 +14,9 @@ export class LedgerService {
 
   getLedger(): Observable<Receipt[]> {
     return of(LEDGER);
+  }
+
+  addReceipt(receipt: IdlessReceipt): void {
+    LEDGER.push({id: LEDGER.length, ...receipt});
   }
 }

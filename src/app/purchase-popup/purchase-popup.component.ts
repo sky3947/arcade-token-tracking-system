@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { PopupService } from '../popup.service';
-import { PATH_HISTORY } from '../app-routing.module';
+import { LedgerService } from '../ledger.service';
 
 @Component({
   selector: 'app-purchase-popup',
@@ -14,7 +14,7 @@ export class PurchasePopupComponent implements OnInit {
 
   constructor(
     private popupService: PopupService,
-    private router: Router
+    private ledgerService: LedgerService,
   ) { }
 
   ngOnInit(): void {
@@ -22,8 +22,11 @@ export class PurchasePopupComponent implements OnInit {
 
   onPurchase(): void {
     this.tokenPurchaseAmount = Math.max(1, this.tokenPurchaseAmount);
-    console.log(`purchased ${this.tokenPurchaseAmount} tokens`);
     this.popupService.hidePopup();
-    // this.router.navigate([`/${PATH_HISTORY}`]);
+    this.ledgerService.addReceipt({
+      date: Date.now(),
+      transaction: {dollarAmount: this.tokenPurchaseAmount * .25, tokenAmount: this.tokenPurchaseAmount},
+      info: "Card Refill",
+    });
   }
 }
